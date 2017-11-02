@@ -2,52 +2,47 @@
     'use strict';
 
     angular
-        .module('app', ['ui.router', 'ngResource', 'googlechart', 'satellizer'])
+        .module('app', ['ui.router', 'ngResource', 'satellizer'])
         .config(routerConfig);
 
     function routerConfig($stateProvider, $urlRouterProvider, $locationProvider, $authProvider) {
 
         $authProvider.facebook({
-            clientId: '283756712103783'
+            clientId: '229030674297824'
         });
-
-        // Optional: For client-side use (Implicit Grant), set responseType to 'token' (default: 'code')
-        /*$authProvider.facebook({
-            clientId: '283756712103783',
-            responseType: 'token'
-        });*/
 
         $locationProvider.html5Mode(true);
 
         var states = [{
-                name: 'home',
-                url: '/home',
-                templateUrl: 'front/views/home.html'
+                name: 'all',
+                url: '/all',
+                templateUrl: 'front/views/all.html',
+                controller: 'AllController',
+                controllerAs: 'all'
             },
 
             {
-                name: 'mypolls',
-                url: '/mypolls',
-                templateUrl: 'front/views/mypolls.html',
+                name: 'my',
+                url: '/my',
+                templateUrl: 'front/views/my.html',
+                controller: 'MyController',
+                controllerAs: 'my',
                 resolve: {
                     redirectIfNotAuthenticated: _redirectIfNotAuthenticated
                 }
             },
 
             {
-                name: 'newpoll',
-                url: '/newpoll',
-                templateUrl: 'front/views/newpoll.html',
+                name: 'nw',
+                url: '/nw',
+                templateUrl: 'front/views/nw.html',
+                controller: 'NwController',
+                controllerAs: 'nw',
                 resolve: {
                     redirectIfNotAuthenticated: _redirectIfNotAuthenticated
                 }
             },
 
-            {
-                name: 'poll',
-                url: '/poll/:id',
-                templateUrl: 'front/views/poll.html'
-            },
         ];
 
         function _redirectIfNotAuthenticated($q, $state, $auth, $timeout, authService) {
@@ -57,7 +52,7 @@
             }
             else {
                 $timeout(function() {
-                    $state.go('home'); /* (4) */
+                    $state.go('all'); /* (4) */
                 });
                 defer.reject();
             }
@@ -68,7 +63,7 @@
             $stateProvider.state(state);
         });
 
-        $urlRouterProvider.otherwise('/home');
+        $urlRouterProvider.otherwise('/all');
 
     }
 

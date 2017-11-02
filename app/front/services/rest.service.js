@@ -9,8 +9,8 @@
 
     function restService($resource) {
 
-        var Poll = $resource(
-            '/api/polls/:id', {
+        var Pic = $resource(
+            '/api/pics/:id', {
                 id: '@id'
             }, {
                 "update": {
@@ -19,25 +19,24 @@
             }
         );
 
-        var Mypoll = $resource(
-            '/api/mypolls', {}, 
+        var MyPic = $resource(
+            '/api/mypics', {}, 
             {
-                getpolls: { method: 'POST', isArray: true }
+                getmypics: { method: 'POST', isArray: true }
             }
         );
 
         return {
-            addPoll: addPoll,
-            getPolls: getPolls,
-            getPollById: getPollById,
-            updatePoll: updatePoll,
-            deletePollById: deletePollById,
-            getMyPolls: getMyPolls
+            addPic: addPic,
+            getPics: getPics,
+            updatePic: updatePic,
+            deletePicById: deletePicById,
+            getMyPics: getMyPics
         };
 
-        function addPoll(pollObj, callback, errorCallback) {
-            return Poll.save(
-                pollObj,
+        function addPic(PicObj, callback, errorCallback) {
+            return Pic.save(
+                PicObj,
                 function(resp) {
                     callback(resp);
                 },
@@ -47,8 +46,8 @@
             );
         }
 
-        function getPolls(callback, errorCallback) {
-            return Poll.query(
+        function getPics(callback, errorCallback) {
+            return Pic.query(
                 function(resp) {
                     callback(resp);
                 },
@@ -58,21 +57,8 @@
             );
         }
 
-        function getPollById(id, callback, errorCallback) {
-            return Poll.get({}, {
-                    id: id
-                },
-                function(resp) {
-                    callback(resp);
-                },
-                function(err) {
-                    errorCallback(err);
-                }
-            );
-        }
-
-        function updatePoll(id, option, callback, errorCallback) {
-            return Poll.update({
+        function updatePic(id, option, callback, errorCallback) {
+            return Pic.update({
                     id: id
                 },
                 option,
@@ -85,8 +71,8 @@
             );
         }
 
-        function deletePollById(id, callback, errorCallback) {
-            return Poll.delete({}, {
+        function deletePicById(id, callback, errorCallback) {
+            return Pic.delete({}, {
                     id: id
                 },
                 function(resp) {
@@ -98,8 +84,8 @@
             );
         }
 
-        function getMyPolls(userId, callback, errorCallback) {
-            return Mypoll.getpolls({}, {
+        function getMyPics(userId, callback, errorCallback) {
+            return MyPic.getmypics({}, {
                     userId: userId
                 },
                 function(resp) {

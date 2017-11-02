@@ -1,0 +1,18 @@
+<div class="row text-center">
+    
+    <h2>All your Pictures</h2><br>
+    
+    <div class="col-sm-12" >
+        
+        <div ng-if="!my.pics[0]">
+            <h3>You currently dont have any Pictures</h3>
+            <h3>But you can <a ui-sref="nw" >create a new one</a></h3>
+        </div>
+        
+        <!--<div class="list-group" ng-cloak>
+          <a class="list-group-item list-group-item-info" ui-sref="pic({ id: pic._id })" ng-repeat="pic in my.pics track by $index">{{pic.title}}</a>
+        </div>-->
+        
+    </div>
+    
+</div>
