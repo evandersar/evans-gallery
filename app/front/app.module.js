@@ -2,8 +2,20 @@
     'use strict';
 
     angular
-        .module('app', ['ui.router', 'ngResource', 'satellizer'])
-        .config(routerConfig);
+        .module('app', ['ui.router', 'ngResource', 'satellizer', 'angularGrid'])
+        .config(routerConfig)
+        .directive('onErrorSrc', function() {
+            return {
+                link: function(scope, element, attrs) {
+                    element.bind('error', function() {
+                        if (attrs.src != attrs.onErrorSrc) {
+                            attrs.$set('src', attrs.onErrorSrc);
+                        }
+                    });
+                }
+            };
+        });
+
 
     function routerConfig($stateProvider, $urlRouterProvider, $locationProvider, $authProvider) {
 

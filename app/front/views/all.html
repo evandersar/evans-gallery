@@ -1,13 +1,18 @@
 <div class="row text-center">
-    
-    <h2>All Pictures</h2><br>
-    
-    <div class="col-sm-12" >
-        
-        <!--<div class="list-group" ng-cloak>
-          <a class="list-group-item list-group-item-info" ui-sref="poll({ id: poll._id })" ng-repeat="poll in all.polls track by $index">{{poll.title}}</a>
-        </div>-->
-        
+
+    <h2 class="">All Pictures</h2><br>
+
+    <div class="col-sm-12">
+
+        <ul class="dynamic-grid" angular-grid="all.pics" ag-grid-width="230" ag-gutter-size="10" ag-id="gallery" ag-refresh-on-img-load="true">
+            <li ng-repeat="pic in all.pics" class="grid">
+                <img ng-src="{{pic.url}}" class="grid-img" on-error-src="/public/img/no_picture_image.png"/>
+                <div class="title">{{pic.title}}</div>
+                <div>{{pic.likes}}</div>
+                <div>{{pic.author}}</div>
+            </li>
+        </ul>
+
     </div>
-    
+
 </div>
