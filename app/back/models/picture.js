@@ -8,6 +8,7 @@ var pictureSchema = mongoose.Schema({
     url: String,
     likes: Number,
     author: String,
+    authorName: String,
     voters: [String]
     
 });

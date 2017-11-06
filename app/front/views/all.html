@@ -1,15 +1,25 @@
+<h2>All Pictures</h2>
+
 <div class="row text-center">
 
-    <h2 class="">All Pictures</h2><br>
-
-    <div class="col-sm-12">
+    <div class="col-md-12">
 
         <ul class="dynamic-grid" angular-grid="all.pics" ag-grid-width="230" ag-gutter-size="10" ag-id="gallery" ag-refresh-on-img-load="true">
             <li ng-repeat="pic in all.pics" class="grid">
-                <img ng-src="{{pic.url}}" class="grid-img" on-error-src="/public/img/no_picture_image.png"/>
-                <div class="title">{{pic.title}}</div>
-                <div>{{pic.likes}}</div>
-                <div>{{pic.author}}</div>
+                <img ng-src="{{pic.url}}" class="grid-img" on-error-src="/public/img/placeholder.jpg" />
+                <div class="descr">
+                    <div class="title text-left">{{pic.title}}</div>
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="likes"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span> {{pic.likes}}</div>
+                            </div>
+                            <div class="col-md-8" style="padding: 4px;">
+                                <div><a ui-sref="nw" class="author"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> {{pic.authorName}}</a></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </li>
         </ul>
 

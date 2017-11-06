@@ -34,13 +34,8 @@
 					<li><a ui-sref="all" ui-sref-active="active-route">All pics</a></li>
 					<li><a ui-sref="my" ui-sref-active="active-route" ng-if="vm.authenticated">My Pics</a></li>
 					<li><a ui-sref="nw" ui-sref-active="active-route" ng-if="vm.authenticated">New Pic</a></li>
-					<li><a href="" class="login-btn" ng-click="vm.authenticate('facebook')" ng-if="!vm.authenticated">Sign in with Facebook</a></li>
-					<li class="dropdown" ng-if="vm.authenticated">
-						<a class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{vm.username}} <span class="caret"></span> </a>
-						<div class="dropdown-menu">
-							<button class="btn btn-primary signout-btn" ng-click="vm.signout()" ng-if="vm.authenticated">Sign out</button>
-						</div>
-					</li>
+					<li ng-if="!vm.authenticated"><a href="" class="login-btn" ng-click="vm.authenticate('facebook')"><strong>Sign in with FB</strong></a></li>
+					<li ng-if="vm.authenticated"><a href="" class="login-btn" ng-click="vm.signout()"><strong>Sign out</strong></a></li>
 				</ul>
 			</div>
 			<!--/.nav-collapse -->
@@ -62,9 +57,7 @@
 	<script src="//unpkg.com/angular-ui-router/release/angular-ui-router.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/satellizer/0.15.5/satellizer.min.js"></script>
 	<script type="text/javascript" src="front/angulargrid.min.js"></script>
-	<!--<script type="text/javascript" src="front/angular-masonry.min.js"></script>-->
-	<!--<script src="//cdn.jsdelivr.net/angular.masonry-packed/0.14.5/angular-masonry-packed.min.js"></script>-->
-	<!--<script type="text/javascript" src="https://www.google.com/jsapi"></script>-->
+	
 	<script type="text/javascript" src="front/app.module.js"></script>
 	<script type="text/javascript" src="front/services/rest.service.js"></script>
 	<script type="text/javascript" src="front/services/auth.service.js"></script>

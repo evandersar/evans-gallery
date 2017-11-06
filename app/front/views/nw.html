@@ -1,25 +1,27 @@
-<div class="row text-center">
+<h2>Here you can add a New Picture</h2>
 
-  <h2>Here you can add a New Picture</h2><br>
+<div class="container">
+  <div class="row text-left">
 
-  <form class="form-inline" name="nw.picForm">
-    <div class="form-group">
-      <label for="title">Picture title: </label>&nbsp;
-      <input type="text" class="form-control" ng-model="nw.pic.title" name="title" ng-required="true" ng-class="{'input-validation-error' : (!nw.pic.title && nw.picForm.title.$touched) || (!nw.pic.title && nw.picForm.$submitted)}">
+    <form class="form-inline" name="nw.picForm">
+      <div class="form-group">
+        <label for="title">Picture title: </label>&nbsp;
+        <input type="text" class="form-control" ng-model="nw.pic.title" name="title" ng-required="true" ng-class="{'input-validation-error' : (!nw.pic.title && nw.picForm.title.$touched) || (!nw.pic.title && nw.picForm.$submitted)}">
+      </div>
+      &nbsp;
+      <div class="form-group">
+        <label>Picture URL: </label>&nbsp;
+        <input type="text" class="form-control" ng-model="nw.pic.url" name="url" ng-required="true" ng-class="{'input-validation-error' : (!nw.pic.url && nw.picForm.url.$touched) || (!nw.pic.url && nw.picForm.$submitted)}">
+      </div>
+
+      <button type="submit" class="btn btn-success" ng-click="nw.savePic()">Add picture</button>
+    </form>
+
+    <br/>
+
+    <div ng-show="nw.err.status" class="alert alert-danger text-center" role="alert">
+      {{nw.err.statusText}} ({{nw.err.status}}). Please try again later
     </div>
-    &nbsp;
-    <div class="form-group">
-      <label>Picture URL: </label>&nbsp;
-      <input type="text" class="form-control" ng-model="nw.pic.url" name="url" ng-required="true" ng-class="{'input-validation-error' : (!nw.pic.url && nw.picForm.url.$touched) || (!nw.pic.url && nw.picForm.$submitted)}">
-    </div>
 
-    <button type="submit" class="btn btn-success" ng-click="nw.savePic()">Add picture</button>
-  </form>
-
-  <br/>
-
-  <div ng-show="nw.err.status" class="alert alert-danger text-center" role="alert">
-    {{nw.err.statusText}} ({{nw.err.status}}). Please try again later
   </div>
-
 </div>

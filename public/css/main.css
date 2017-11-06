@@ -1,86 +1,85 @@
 /****** Main Styling ******/
 
 body {
-	font-family: 'Roboto', sans-serif;
-	font-size: 16px;
-	background-color: rgba(0,0,0,.5);
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    background-color: rgba(0, 0, 0, .5);
 }
 
 .active-route {
-	font-weight: bold; 
+    font-weight: bold;
 }
 
 /****** Click Styling ******/
 
-.btn {	/* Styling for buttons */
-	margin: 0 8px;
-	display: inline-block;
-	border: 0;
-	font-size: 14px;
-	border-radius: 3px;
-	padding: 10px 5px;
-	min-width: 100px;
-	font-weight: 500;
+.btn {
+    /* Styling for buttons */
+    margin: 0 8px;
+    display: inline-block;
+    border: 0;
+    font-size: 14px;
+    border-radius: 3px;
+    padding: 10px 5px;
+    min-width: 100px;
+    font-weight: 500;
 }
 
-.btn:focus {	/* Remove outline when hovering over button */
-	outline: none;
+.btn:focus {
+    /* Remove outline when hovering over button */
+    outline: none;
 }
 
-.btn:active {	/* Scale the button down by 10% when clicking on button */
-	transform: scale(0.9, 0.9);
-	-webkit-transform: scale(0.9, 0.9);
-	-moz-transform: scale(0.9, 0.9);
+.btn:active {
+    /* Scale the button down by 10% when clicking on button */
+    transform: scale(0.9, 0.9);
+    -webkit-transform: scale(0.9, 0.9);
+    -moz-transform: scale(0.9, 0.9);
 }
 
-.btn-delete {	/* Styling for delete button */
-	background-color: #ECEFF1;
-	color: #212121;
+.btn-delete {
+    /* Styling for delete button */
+    background-color: #ECEFF1;
+    color: #212121;
 }
 
 /****** Other Styling ******/
 
-.option{
-	margin: 5px 0;
+.option {
+    margin: 5px 0;
 }
 
-.mychart{
-	height:400px; 
-	width:100%;
-	margin-top: 10px;
+.mychart {
+    height: 400px;
+    width: 100%;
+    margin-top: 10px;
 }
 
 .login-btn{
+    /*color: #3B5998 !important;*/
     border: 1px solid;
     border-radius: 5px;
-    background-color: #3B5998;
-    color: white !important;
 }
 
-.login-btn:hover, .login-btn:focus{
-    background-color: #3B5998 !important;
-    color: white !important;
+.login-btn:active {
+    /* Scale the button down by 10% when clicking on button */
+    transform: scale(0.9, 0.9);
+    -webkit-transform: scale(0.9, 0.9);
+    -moz-transform: scale(0.9, 0.9);
 }
 
-.login-btn:active {	/* Scale the button down by 10% when clicking on button */
-	transform: scale(0.9, 0.9);
-	-webkit-transform: scale(0.9, 0.9);
-	-moz-transform: scale(0.9, 0.9);
+.login-btn:hover,
+.login-btn:focus {
+    text-decoration: none;
+    color: #365899 !important;
 }
 
-.dropdown-toggle{
-	cursor: pointer;
-}
-
-.signout-btn {
-    display: block;
-    width: 90%;
-    margin: 0 auto;
+.dropdown-toggle {
+    cursor: pointer;
 }
 
 .navbar-nav {
-	margin-top: 0;
-	margin-bottom: 0;
+    margin-top: 0;
+    margin-bottom: 0;
 }
 
 .input-validation-error {
@@ -88,8 +87,8 @@ body {
     background-color: #f2dede;
 }
 
-.alert{
-	padding: 10px;
+.alert {
+    padding: 10px;
 }
 
 
@@ -103,6 +102,7 @@ body {
     overflow: hidden;
     border-radius: 8px;
 }
+
 .grid-img {
     width: 100%;
     vertical-align: middle;
@@ -112,12 +112,57 @@ body {
     opacity: 0;
     visibility: hidden;
 }
- 
-.grid-img.img-loaded{
+
+.grid-img.img-loaded {
     visibility: visible;
     opacity: 1;
 }
 
-.title{
-	overflow-x: hidden;
+.title {
+    overflow-x: hidden;
+    font-size: 20px;
+    margin-bottom: 5px;
+    padding-left: 15px;
+}
+
+.likes {
+    border: 1px solid;
+    padding: 3px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.likes:active {
+    transform: scale(0.9, 0.9);
+    -webkit-transform: scale(0.9, 0.9);
+    -moz-transform: scale(0.9, 0.9);
+}
+
+.likes:hover,
+.likes:focus {
+    color: #365899;
+}
+
+.author,
+.author:hover,
+.author:focus {
+    text-decoration: none;
+    color: black;
+}
+
+.author:hover,
+.author:focus {
+    text-decoration: none;
+    color: #365899;
+}
+
+.descr {
+    padding: 5px;
+    color: black;
+}
+
+.navbar-nav>li>a {
+    margin-top: 4px;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }

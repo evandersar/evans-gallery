@@ -25,6 +25,7 @@
             //console.log("nw.picForm.$valid => ", nw.picForm.$valid);
             if (nw.picForm.$valid) {
                 nw.pic.author = authService.getPayload()['facebook'];
+                nw.pic.authorName =authService.getPayload()['name'];
 
                 restService.addPic(
                     nw.pic,
