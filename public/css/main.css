@@ -3,7 +3,7 @@
 body {
     font-family: 'Roboto', sans-serif;
     font-size: 16px;
-    background-color: rgba(0, 0, 0, .5);
+    background-color: rgba(0, 0, 0, .4);
 }
 
 .active-route {
@@ -54,7 +54,7 @@ body {
     margin-top: 10px;
 }
 
-.login-btn{
+.login-btn {
     /*color: #3B5998 !important;*/
     border: 1px solid;
     border-radius: 5px;
@@ -157,7 +157,7 @@ body {
 }
 
 .descr {
-    padding: 5px;
+    /*padding: 5px;*/
     color: black;
 }
 
@@ -165,4 +165,8 @@ body {
     margin-top: 4px;
     padding-top: 10px;
     padding-bottom: 10px;
+}
+
+.auth-cont {
+    margin: 5px 0;
 }

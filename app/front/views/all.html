@@ -5,16 +5,19 @@
     <div class="col-md-12">
 
         <ul class="dynamic-grid" angular-grid="all.pics" ag-grid-width="230" ag-gutter-size="10" ag-id="gallery" ag-refresh-on-img-load="true">
-            <li ng-repeat="pic in all.pics" class="grid">
+            <li ng-repeat="pic in all.pics track by $index" class="grid">
                 <img ng-src="{{pic.url}}" class="grid-img" on-error-src="/public/img/placeholder.jpg" />
                 <div class="descr">
                     <div class="title text-left">{{pic.title}}</div>
                     <div class="container-fluid">
                         <div class="row">
-                            <div class="col-md-4">
-                                <div class="likes"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span> {{pic.likes}}</div>
+                            <div class="col-md-6">
+                                <div class="likes" ng-click="all.updatePic(pic._id, $index)"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span> {{pic.likes}}</div>
                             </div>
-                            <div class="col-md-8" style="padding: 4px;">
+                            <div class="col-md-6" ng-show="pic.author === all.userFB">
+                                <div class="likes" ng-click="all.updatePic(pic._id, $index)"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></div>
+                            </div>
+                            <div class="col-md-12 text-left auth-cont">
                                 <div><a ui-sref="nw" class="author"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> {{pic.authorName}}</a></div>
                             </div>
                         </div>

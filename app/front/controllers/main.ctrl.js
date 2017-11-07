@@ -26,7 +26,7 @@
                     vm.authenticated = authService.isAuthenticated();
                     vm.getName();
                     //if ($state.current.name === 'poll') window.location.reload();
-                    if ($state.current.name === 'poll') $scope.$broadcast('logining', 'User logining');
+                    //if ($state.current.name === 'poll') $scope.$broadcast('logining', 'User logining');
                 })
                 .catch(function(response) {
                     // Something went wrong.
@@ -38,9 +38,9 @@
              authService.logout();
              //$state.go('home');
              //console.log("$state.current => ", $state.current);
-             if ($state.current.name === 'newpoll' || $state.current.name === 'mypolls') $state.go('home');
+             if ($state.current.name === 'nw' || $state.current.name === 'my') $state.go('all');
              vm.authenticated = authService.isAuthenticated();
-             $scope.$broadcast('logining', 'User logining');
+             //$scope.$broadcast('logining', 'User logining');
         }
         
         function getName(){

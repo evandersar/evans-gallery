@@ -1,35 +1,54 @@
 (function() {
     'use strict';
-    
+
     angular
         .module('app')
         .controller('MyController', MyController);
-        
+
     MyController.$inject = ["restService", "authService"];
-    
-    function MyController(restService, authService) { 
+
+    function MyController(restService, authService) {
         var my = this;
-        
         my.pics = [];
-        
+
         my.getMyPics = getMyPics;
-        
-        function getMyPics(){
+        my.updatePic = updatePic;
+
+        function getMyPics() {
             restService.getMyPics(
                 authService.getPayload()['facebook'],
-                function(resp){
+                function(resp) {
                     my.pics = resp;
                     console.log("my.pics => ", my.pics);
                 },
-                function(err){
+                function(err) {
                     console.log(err);
                     alert(`${err.statusText} ${err.status}`);
                 }
             );
         }
-        
+
         my.getMyPics();
-        
+
+        function updatePic(pic_id, index) {
+
+            restService.updatePic(
+                pic_id, {
+                    voter: authService.getPayload()['facebook']
+                },
+                function(resp) {
+                    console.log("resp => ", resp);
+                    //console.log(`Pic with id: ${resp._id} successfully updated`);
+                    my.pics[index].likes = resp.likes;
+                },
+                function(err) {
+                    console.log(err);
+                    alert(`${err.statusText} ${err.status}`);
+                }
+            );
+
+        }
+
     }
-    
+
 })();
