@@ -5,9 +5,9 @@
         .module('app')
         .controller('AllController', AllController);
 
-    AllController.$inject = ["restService", "authService", "$state"];
+    AllController.$inject = ["restService", "authService", "$state", "$scope"];
 
-    function AllController(restService, authService, $state) {
+    function AllController(restService, authService, $state, $scope) {
         var all = this;
         all.pics = [];
         all.headingTitle = "All Pictures";
@@ -24,7 +24,7 @@
                 function(resp) {
                     all.pics = resp;
                     all.headingTitle = `Pictures of ${all.pics[0].authorName}`;
-                    console.log("all.pics => ", all.pics);
+                    //console.log("all.pics => ", all.pics);
                 },
                 function(err) {
                     console.log(err);
@@ -37,7 +37,7 @@
             restService.getPics(
                 function(resp) {
                     all.pics = resp;
-                    console.log("all.pics => ", all.pics);
+                    //console.log("all.pics => ", all.pics);
                     //angularGridInstance.gallery.refresh();
                 },
                 function(err) {
@@ -53,18 +53,6 @@
         else{
             all.getPics();
         }
-        
-        function authenticate(provider) {
-            authService.authenticate(provider)
-                .then(function(response) {
-                    // Signed in with provider.
-                    console.log('Signed in with provider');
-                })
-                .catch(function(response) {
-                    // Something went wrong.
-                    console.log('Something went wrong');
-                });
-        }
 
         function updatePic(pic_id, index) {
         
@@ -74,7 +62,7 @@
                         voter: authService.getPayload()['facebook']
                     },
                     function(resp) {
-                        console.log("resp => ", resp);
+                        //console.log("resp => ", resp);
                         //console.log(`Pic with id: ${resp._id} successfully updated`);
                         all.pics[index].likes = resp.likes;
                     },
@@ -85,7 +73,7 @@
                 );
             }
             else {
-                authenticate('facebook');
+                $scope.vm.authenticate('facebook');
             }
         
         }

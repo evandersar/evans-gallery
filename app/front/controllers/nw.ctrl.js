@@ -18,7 +18,6 @@
             url: ""
         };
 
-
         function savePic() {
             nw.picForm.$setSubmitted();
             //console.log("nw.picForm.$submitted => ", nw.picForm.$submitted);
@@ -30,9 +29,8 @@
                 restService.addPic(
                     nw.pic,
                     function(resp) {
-                        console.log(`pic saved with id: ${resp._id}`);
-                        //alert(`pic saved with id: ${resp.id}`);
-                        $state.go('my'); //{ id: resp.id }
+                        //console.log(`pic saved with id: ${resp._id}`);
+                        $state.go('my');
                     },
                     function(err) {
                         console.log(err);
@@ -41,7 +39,7 @@
 
                         $timeout(function() {
                             nw.err = {};
-                            console.log('nw.err => ', nw.err);
+                            //console.log('nw.err => ', nw.err);
                         }, 3000);
                     }
                 );

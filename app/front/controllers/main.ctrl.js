@@ -5,46 +5,39 @@
         .module('app')
         .controller('MainController', MainController);
 
-    MainController.$inject = ["authService", "$state", "$scope"];
+    MainController.$inject = ["authService", "$state"];
 
-    function MainController(authService, $state, $scope) {
+    function MainController(authService, $state) {
         var vm = this;
         vm.authenticated = authService.isAuthenticated();
         vm.authenticate = authenticate;
         vm.signout = signout;
-        vm.getName = getName;
-        
-        //console.log('vm.authenticated => ', vm.authenticated);
-        if (vm.authenticated) vm.getName();
 
         function authenticate(provider) {
             authService.authenticate(provider)
                 .then(function(response) {
                     // Signed in with provider.
-                    console.log('Signed in with provider');
+                    //console.log('Signed in with provider');
                     //console.log('response => ', response);
                     vm.authenticated = authService.isAuthenticated();
-                    vm.getName();
-                    //if ($state.current.name === 'poll') window.location.reload();
-                    //if ($state.current.name === 'poll') $scope.$broadcast('logining', 'User logining');
                 })
-                .catch(function(response) {
+                .catch(function(error) {
                     // Something went wrong.
-                    console.log('Something went wrong');
+                    console.log(error);
+                    if (error.message) {
+                        alert(error.message);
+                    }
+                    else{
+                        alert(`${error.statusText} ${error.status}`);
+                    }
                 });
         }
         
         function signout(){
              authService.logout();
-             //$state.go('home');
              //console.log("$state.current => ", $state.current);
              if ($state.current.name === 'nw' || $state.current.name === 'my') $state.go('all');
              vm.authenticated = authService.isAuthenticated();
-             //$scope.$broadcast('logining', 'User logining');
-        }
-        
-        function getName(){
-             vm.username = authService.getPayload()['name'];
         }
 
     }

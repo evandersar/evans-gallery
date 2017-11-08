@@ -15,7 +15,7 @@ function PictureHandler() {
         newPic.save((err, pic) => {
             if (err) res.status(500).send(err);
 
-            console.log("Saved pic: ", pic);
+            //console.log("Saved pic: ", pic);
             res.json(pic);
         });
     };
@@ -45,13 +45,13 @@ function PictureHandler() {
 
         Picture.findById(picID, function(err, pic) {
             if (err) res.status(500).send(err);
-            console.log("pic => ", pic);
+            //console.log("pic => ", pic);
 
             if (pic.voters.indexOf(voter) === -1) {
                 Picture.findByIdAndUpdate(picID, { $inc: { likes: 1 }, $push: { voters: voter } }, { new: true },
                     function(err, doc) {
                         if (err) res.status(500).send(err);
-                        console.log("doc => ", doc);
+                        //console.log("doc => ", doc);
                         res.json(doc);
                     }
                 );
@@ -60,7 +60,7 @@ function PictureHandler() {
                 Picture.findByIdAndUpdate(picID, { $inc: { likes: -1 }, $pull: { voters: voter } }, { new: true },
                     function(err, doc) {
                         if (err) res.status(500).send(err);
-                        console.log("doc => ", doc);
+                        //console.log("doc => ", doc);
                         res.json(doc);
                     }
                 );

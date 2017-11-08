@@ -4,7 +4,7 @@
 
     <div class="col-md-12">
 
-        <ul class="dynamic-grid" angular-grid="all.pics" ag-grid-width="200" ag-gutter-size="10" ag-id="gallery" ag-refresh-on-img-load="true">
+        <ul class="dynamic-grid" angular-grid="all.pics" ag-grid-width="230" ag-gutter-size="10" ag-id="gallery" ag-refresh-on-img-load="true">
             <li ng-repeat="pic in all.pics track by $index" class="grid">
                 <img ng-src="{{pic.url}}" class="grid-img" on-error-src="/public/img/placeholder.jpg" />
                 <div class="descr">

@@ -20,7 +20,7 @@
                 authService.getPayload()['facebook'],
                 function(resp) {
                     my.pics = resp;
-                    console.log("my.pics => ", my.pics);
+                    //console.log("my.pics => ", my.pics);
                 },
                 function(err) {
                     console.log(err);
@@ -38,7 +38,7 @@
                     voter: authService.getPayload()['facebook']
                 },
                 function(resp) {
-                    console.log("resp => ", resp);
+                    //console.log("resp => ", resp);
                     //console.log(`Pic with id: ${resp._id} successfully updated`);
                     my.pics[index].likes = resp.likes;
                 },
@@ -55,7 +55,7 @@
             restService.deletePicById(
                 pic_id,
                 function(resp) {
-                    console.log("resp => ", resp);
+                    //console.log("resp => ", resp);
                     //console.log(`Pic with id: ${resp._id} successfully removed`);
                     my.pics.splice(index, 1);
                 },
