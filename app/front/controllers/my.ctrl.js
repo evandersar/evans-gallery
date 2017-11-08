@@ -13,6 +13,7 @@
 
         my.getMyPics = getMyPics;
         my.updatePic = updatePic;
+        my.removePic = removePic;
 
         function getMyPics() {
             restService.getMyPics(
@@ -40,6 +41,23 @@
                     console.log("resp => ", resp);
                     //console.log(`Pic with id: ${resp._id} successfully updated`);
                     my.pics[index].likes = resp.likes;
+                },
+                function(err) {
+                    console.log(err);
+                    alert(`${err.statusText} ${err.status}`);
+                }
+            );
+
+        }
+
+        function removePic(pic_id, index) {
+
+            restService.deletePicById(
+                pic_id,
+                function(resp) {
+                    console.log("resp => ", resp);
+                    //console.log(`Pic with id: ${resp._id} successfully removed`);
+                    my.pics.splice(index, 1);
                 },
                 function(err) {
                     console.log(err);

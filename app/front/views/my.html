@@ -16,11 +16,11 @@
                     <div class="title text-left">{{pic.title}}</div>
                     <div class="container-fluid">
                         <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-md-6 padd5">
                                 <div class="likes" ng-click="my.updatePic(pic._id, $index)"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span> {{pic.likes}}</div>
                             </div>
-                            <div class="col-md-6">
-                                <div class="likes" ng-click="my.updatePic(pic._id, $index)"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></div>
+                            <div class="col-md-6 padd5">
+                                <div class="likes" ng-click="my.removePic(pic._id, $index)"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></div>
                             </div>
                             <div class="col-md-12 text-left auth-cont">
                                 <div><a ui-sref="nw" class="author"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> {{pic.authorName}}</a></div>

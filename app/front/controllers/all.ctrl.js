@@ -5,17 +5,14 @@
         .module('app')
         .controller('AllController', AllController);
 
-    AllController.$inject = ["restService", "angularGridInstance", "authService", "$scope"];
+    AllController.$inject = ["restService", "authService"];
 
-    function AllController(restService, angularGridInstance, authService, $scope) {
+    function AllController(restService, authService) {
         var all = this;
         all.pics = [];
-        all.userFB = '';
 
         all.getPics = getPics;
         all.updatePic = updatePic;
-        
-        if (authService.isAuthenticated()) all.userFB = authService.getPayload()['facebook'];
 
         function getPics() {
             restService.getPics(
@@ -38,7 +35,6 @@
                 .then(function(response) {
                     // Signed in with provider.
                     console.log('Signed in with provider');
-                    all.userFB = authService.getPayload()['facebook'];
                 })
                 .catch(function(response) {
                     // Something went wrong.

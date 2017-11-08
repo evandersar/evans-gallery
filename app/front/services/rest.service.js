@@ -20,8 +20,7 @@
         );
 
         var MyPic = $resource(
-            '/api/mypics', {}, 
-            {
+            '/api/mypics', {}, {
                 getmypics: { method: 'POST', isArray: true }
             }
         );
@@ -57,11 +56,11 @@
             );
         }
 
-        function updatePic(id, option, callback, errorCallback) {
+        function updatePic(id, voter, callback, errorCallback) {
             return Pic.update({
                     id: id
                 },
-                option,
+                voter,
                 function(resp) {
                     callback(resp);
                 },
@@ -72,9 +71,8 @@
         }
 
         function deletePicById(id, callback, errorCallback) {
-            return Pic.delete({}, {
-                    id: id
-                },
+            return Pic.delete(
+                { id: id },
                 function(resp) {
                     callback(resp);
                 },

@@ -14,8 +14,8 @@ module.exports = function(app) {
 		.get(pictureHandler.getPictures);
 
 	app.route('/api/pics/:id')
-		.put(pictureHandler.updatePicture);
-		//.delete(pictureHandler.removePicture);
+		.put(pictureHandler.updatePicture)
+		.delete(pictureHandler.removePicture);
 
 	app.route('/api/mypics')
 		.post(pictureHandler.getMyPictures);

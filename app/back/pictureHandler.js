@@ -66,11 +66,20 @@ function PictureHandler() {
                 );
             }
 
+        });
+    };
 
+    this.removePicture = function(req, res) {
+        var picId = req.params.id;
+
+        Picture.findByIdAndRemove(picId, (err, doc) => {
+            if (err) res.status(500).send(err);
+            
+            res.json({ id:  doc._id});
         });
 
-
     };
+
 }
 
 module.exports = PictureHandler;
