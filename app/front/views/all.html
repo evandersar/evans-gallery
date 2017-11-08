@@ -1,21 +1,21 @@
-<h2>All Pictures</h2>
+<h2>{{all.headingTitle}}</h2>
 
 <div class="row text-center">
 
     <div class="col-md-12">
 
-        <ul class="dynamic-grid" angular-grid="all.pics" ag-grid-width="230" ag-gutter-size="10" ag-id="gallery" ag-refresh-on-img-load="true">
+        <ul class="dynamic-grid" angular-grid="all.pics" ag-grid-width="200" ag-gutter-size="10" ag-id="gallery" ag-refresh-on-img-load="true">
             <li ng-repeat="pic in all.pics track by $index" class="grid">
                 <img ng-src="{{pic.url}}" class="grid-img" on-error-src="/public/img/placeholder.jpg" />
                 <div class="descr">
                     <div class="title text-left">{{pic.title}}</div>
                     <div class="container-fluid">
-                        <div class="row" style="margin-bottom: 10px;">
+                        <div class="row" style="margin-bottom: 5px;">
                             <div class="col-md-3 padd5">
                                 <div class="likes" ng-click="all.updatePic(pic._id, $index)"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span> {{pic.likes}}</div>
                             </div>
                             <div class="col-md-9 padd5">
-                                <div class="text-right auth"><a ui-sref="nw" class="author"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> {{pic.authorName}}</a></div>
+                                <div class="text-right auth"><a ui-sref="user({ id: pic.author })" class="author"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> {{pic.authorName}}</a></div>
                             </div>
                         </div>
                     </div>

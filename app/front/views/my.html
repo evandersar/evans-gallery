@@ -6,10 +6,10 @@
         
         <div ng-if="!my.pics[0]">
             <h3>You currently dont have any Pictures</h3>
-            <h3>But you can <a ui-sref="nw" >create a new one</a></h3>
+            <h3>But you can <a ui-sref="nw" >add a new one</a></h3>
         </div>
         
-        <ul class="dynamic-grid" angular-grid="my.pics" ag-grid-width="230" ag-gutter-size="10" ag-id="gmyery" ag-refresh-on-img-load="true">
+        <ul class="dynamic-grid" angular-grid="my.pics" ag-grid-width="200" ag-gutter-size="10" ag-id="gmyery" ag-refresh-on-img-load="true">
             <li ng-repeat="pic in my.pics track by $index" class="grid">
                 <img ng-src="{{pic.url}}" class="grid-img" on-error-src="/public/img/placeholder.jpg" />
                 <div class="descr">
@@ -23,7 +23,7 @@
                                 <div class="likes" ng-click="my.removePic(pic._id, $index)"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></div>
                             </div>
                             <div class="col-md-12 text-left auth-cont">
-                                <div><a ui-sref="nw" class="author"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> {{pic.authorName}}</a></div>
+                                <div><a ui-sref="user({ id: pic.author })" class="author"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> {{pic.authorName}}</a></div>
                             </div>
                         </div>
                     </div>

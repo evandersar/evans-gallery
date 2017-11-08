@@ -5,14 +5,33 @@
         .module('app')
         .controller('AllController', AllController);
 
-    AllController.$inject = ["restService", "authService"];
+    AllController.$inject = ["restService", "authService", "$state"];
 
-    function AllController(restService, authService) {
+    function AllController(restService, authService, $state) {
         var all = this;
         all.pics = [];
+        all.headingTitle = "All Pictures";
 
         all.getPics = getPics;
         all.updatePic = updatePic;
+        all.getMyPics = getMyPics;
+        
+        var userId = $state.params.id;
+        
+        function getMyPics() {
+            restService.getMyPics(
+                userId,
+                function(resp) {
+                    all.pics = resp;
+                    all.headingTitle = `Pictures of ${all.pics[0].authorName}`;
+                    console.log("all.pics => ", all.pics);
+                },
+                function(err) {
+                    console.log(err);
+                    alert(`${err.statusText} ${err.status}`);
+                }
+            );
+        }
 
         function getPics() {
             restService.getPics(
@@ -27,8 +46,13 @@
                 }
             );
         }
-
-        all.getPics();
+        
+        if (userId) {
+            all.getMyPics();
+        }
+        else{
+            all.getPics();
+        }
         
         function authenticate(provider) {
             authService.authenticate(provider)

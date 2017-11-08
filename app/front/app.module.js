@@ -54,6 +54,14 @@
                     redirectIfNotAuthenticated: _redirectIfNotAuthenticated
                 }
             },
+            
+            {
+                name: 'user',
+                url: '/user/:id',
+                templateUrl: 'front/views/all.html',
+                controller: 'AllController',
+                controllerAs: 'all'
+            },
 
         ];
 
